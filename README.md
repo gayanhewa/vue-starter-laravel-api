@@ -1,6 +1,8 @@
-## Laravel API Starter Application
+## vue-starter Backend API (Laravel-based)
 
 This application will serve as the companion app to another project called vue-starter. It is meant to be a small demo of a Laravel API, using Dingo and JWT for authentication.
+
+[vue-starter Frontend App](https://github.com/layer7be/vue-starter)
 
 ## Installation
 
@@ -9,6 +11,7 @@ This application will serve as the companion app to another project called vue-s
 ```
 composer install
 touch database/database.sqlite
+cp .env.example .env
 php artisan key:generate
 php artisan jwt:generate
 php artisan migrate
