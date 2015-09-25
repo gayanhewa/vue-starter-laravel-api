@@ -2,8 +2,10 @@
 
 namespace Api\Controllers;
 
+use App\User;
 use Dingo\Api\Facade\API;
 use Illuminate\Http\Request;
+use Api\Requests\UserRequest;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
@@ -37,5 +39,18 @@ class AuthController extends BaseController
     {
         // Our routes file should have already authenticated this token, so we just return success here
         return API::response()->array(['status' => 'success'])->statusCode(200);
+    }
+
+    public function register(UserRequest $request)
+    {
+        $newUser = [
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'password' => bcrypt($request->get('password')),
+        ];
+        $user = User::create($newUser);
+        $token = JWTAuth::fromUser($user);
+
+        return response()->json(compact('token'));
     }
 }
