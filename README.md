@@ -10,11 +10,12 @@ This application will serve as the companion app to another project called vue-s
 ### Step 2: Prerequisites
 ```
 composer install
-touch database/database.sqlite
 cp .env.example .env
-php artisan key:generate
-php artisan jwt:generate
+touch database/database.sqlite
 php artisan migrate
+php artisan key:generate
+php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\JWTAuthServiceProvider"
+php artisan jwt:generate
 ```
 Next up, create some sample data using Tinker. Note: you enter what is after the >>> marks
 ```
