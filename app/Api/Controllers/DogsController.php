@@ -5,6 +5,7 @@ namespace Api\Controllers;
 use App\Dog;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Api\Requests\DogRequest;
 use Api\Transformers\DogTransformer;
 
 /**
@@ -36,7 +37,7 @@ class DogsController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DogRequest $request)
     {
         return Dog::create($request->only(['name', 'age']));
     }
@@ -59,7 +60,7 @@ class DogsController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DogRequest $request, $id)
     {
         $dog = Dog::findOrFail($id);
         $dog->update($request->only(['name', 'age']));
