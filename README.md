@@ -7,6 +7,9 @@ This application will serve as the companion app to another project called vue-s
 ## Installation
 
 ### Step 1: Clone the repo
+```
+git clone https://github.com/layer7be/vue-starter-laravel-api
+```
 
 ### Step 2: Prerequisites
 ```
@@ -15,7 +18,7 @@ touch database/database.sqlite
 php artisan migrate
 php artisan db:seed
 php artisan key:generate
-php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\JWTAuthServiceProvider"
+php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\LaravelServiceProvider"
 php artisan jwt:generate
 ```
 
